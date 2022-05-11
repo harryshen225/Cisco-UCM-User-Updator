@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soap-env:Envelope
+	xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap-env:Body>
+		<ns0:addPhone
+			xmlns:ns0="http://www.cisco.com/AXL/API/12.5">
+			<phone>
+				<name>SEP123212321299</name>
+				<description>SEP123212321290</description>
+				<product>Cisco 8945</product>
+				<class>Phone</class>
+				<protocol>SIP</protocol>
+				<protocolSide>User</protocolSide>
+				<callingSearchSpaceName></callingSearchSpaceName>
+				<devicePoolName uuid="{1B1B9EB6-7803-11D3-BDF0-00108302EAD1}">dCloud_DP</devicePoolName>
+				<commonDeviceConfigName></commonDeviceConfigName>
+				<commonPhoneConfigName uuid="{AC243D17-98B4-4118-8FEB-5FF2E1B781AC}">Standard Common Phone Profile</commonPhoneConfigName>
+				<networkLocation>Use System Default</networkLocation>
+				<locationName uuid="{29C5C1C4-8871-4D1E-8394-0B9181E8C54D}">Hub_None</locationName>
+				<mediaResourceListName></mediaResourceListName>
+				<automatedAlternateRoutingCssName></automatedAlternateRoutingCssName>
+				<aarNeighborhoodName></aarNeighborhoodName>
+				<traceFlag>false</traceFlag>
+				<useTrustedRelayPoint>Default</useTrustedRelayPoint>
+				<retryVideoCallAsAudio>true</retryVideoCallAsAudio>
+				<securityProfileName>Cisco 8945 - Standard SIP Non-Secure Profile</securityProfileName>
+				<sipProfileName>Standard SIP Profile</sipProfileName>
+				<cgpnTransformationCssName></cgpnTransformationCssName>
+				<useDevicePoolCgpnTransformCss>true</useDevicePoolCgpnTransformCss>
+				<geoLocationName></geoLocationName>
+				<geoLocationFilterName></geoLocationFilterName>
+				<sendGeoLocation>false</sendGeoLocation>
+				<lines>
+					<line>
+						<index>1</index>
+						<dirn uuid="{4F926BB2-C575-7DDE-9EC7-CEF3CC0068A1}">
+							<pattern>8989</pattern>
+							<routePartitionName uuid="{99C5A8FE-DD48-6E6A-CDEC-42262292EB98}">dCloud_PT</routePartitionName>
+						</dirn>
+						<ringSetting>Use System Default</ringSetting>
+						<consecutiveRingSetting>Use System Default</consecutiveRingSetting>
+						<ringSettingIdlePickupAlert>Use System Default</ringSettingIdlePickupAlert>
+						<ringSettingActivePickupAlert>Use System Default</ringSettingActivePickupAlert>
+						<mwlPolicy>Use System Policy</mwlPolicy>
+						<maxNumCalls>4</maxNumCalls>
+						<busyTrigger>2</busyTrigger>
+						<callInfoDisplay>
+							<callerName>false</callerName>
+							<callerNumber>false</callerNumber>
+							<redirectedNumber>false</redirectedNumber>
+							<dialedNumber>false</dialedNumber>
+						</callInfoDisplay>
+						<recordingProfileName></recordingProfileName>
+						<monitoringCssName></monitoringCssName>
+						<recordingFlag>Call Recording Disabled</recordingFlag>
+						<audibleMwi>Default</audibleMwi>
+						<partitionUsage>General</partitionUsage>
+						<missedCallLogging>true</missedCallLogging>
+						<recordingMediaSource>Gateway Preferred</recordingMediaSource>
+					</line>
+				</lines>
+				<phoneTemplateName>Standard 8945 SIP</phoneTemplateName>
+				<primaryPhoneName></primaryPhoneName>
+				<ringSettingIdleBlfAudibleAlert>Default</ringSettingIdleBlfAudibleAlert>
+				<ringSettingBusyBlfAudibleAlert>Default</ringSettingBusyBlfAudibleAlert>
+				<softkeyTemplateName></softkeyTemplateName>
+				<defaultProfileName></defaultProfileName>
+				<enableExtensionMobility>true</enableExtensionMobility>
+				<joinAcrossLines>Off</joinAcrossLines>
+				<builtInBridgeStatus>Default</builtInBridgeStatus>
+				<callInfoPrivacyStatus>Default</callInfoPrivacyStatus>
+				<hlogStatus>On</hlogStatus>
+				<ownerUserName uuid="c8872eda-8ee2-d7bc-50d0-d39861b3e832">acassidy</ownerUserName>
+				<ignorePresentationIndicators>false</ignorePresentationIndicators>
+				<packetCaptureMode>None</packetCaptureMode>
+				<packetCaptureDuration>0</packetCaptureDuration>
+				<subscribeCallingSearchSpaceName></subscribeCallingSearchSpaceName>
+				<rerouteCallingSearchSpaceName></rerouteCallingSearchSpaceName>
+				<allowCtiControlFlag>true</allowCtiControlFlag>
+				<presenceGroupName uuid="{AD243D17-98B4-4118-8FEB-5FF2E1B781AC}">Standard Presence group</presenceGroupName>
+				<unattendedPort>false</unattendedPort>
+				<requireDtmfReception>false</requireDtmfReception>
+				<rfc2833Disabled>false</rfc2833Disabled>
+				<certificateOperation>No Pending Operation</certificateOperation>
+				<deviceMobilityMode>Default</deviceMobilityMode>
+				<remoteDevice>false</remoteDevice>
+				<dndOption>Use Common Phone Profile Setting</dndOption>
+				<dndStatus>false</dndStatus>
+				<isActive>true</isActive>
+				<isDualMode>false</isDualMode>
+				<mobilityUserIdName></mobilityUserIdName>
+				<phoneSuite>Default</phoneSuite>
+				<phoneServiceDisplay>Default</phoneServiceDisplay>
+				<isProtected>false</isProtected>
+				<mtpRequired>false</mtpRequired>
+				<mtpPreferedCodec>711ulaw</mtpPreferedCodec>
+				<dialRulesName></dialRulesName>
+				<outboundCallRollover>No Rollover</outboundCallRollover>
+				<hotlineDevice>false</hotlineDevice>
+				<alwaysUsePrimeLine>Default</alwaysUsePrimeLine>
+				<alwaysUsePrimeLineForVoiceMessage>Default</alwaysUsePrimeLineForVoiceMessage>
+				<featureControlPolicy></featureControlPolicy>
+				<deviceTrustMode>Not Trusted</deviceTrustMode>
+				<requireOffPremiseLocation>false</requireOffPremiseLocation>
+				<cgpnIngressDN></cgpnIngressDN>
+				<useDevicePoolCgpnIngressDN>true</useDevicePoolCgpnIngressDN>
+				<enableCallRoutingToRdWhenNoneIsActive>false</enableCallRoutingToRdWhenNoneIsActive>
+				<wifiHotspotProfile></wifiHotspotProfile>
+				<wirelessLanProfileGroup></wirelessLanProfileGroup>
+				<elinGroup></elinGroup>
+				<enableActivationID>false</enableActivationID>
+				<mraServiceDomain></mraServiceDomain>
+				<allowMraMode>false</allowMraMode>
+			</phone>
+		</ns0:addPhone>
+	</soap-env:Body>
+</soap-env:Envelope>

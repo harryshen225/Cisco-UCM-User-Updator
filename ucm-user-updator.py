@@ -12,7 +12,7 @@ from yachalk import chalk
 import numpy as np
 import logging
 
-logging.getLogger('zeep').setLevel(logging.ERROR)
+logging.getLogger('zeep').setLevel(logging.DEBUG)
 
 
 # global envionrment variables
