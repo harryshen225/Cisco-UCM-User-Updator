@@ -26,14 +26,14 @@ LEVEL = 'ERROR'
 WSDL_FILE = 'AXLAPI.wsdl'
 
 # HWL UCM
-user = 'CCMAdministrator'
-passwd = "HWLAdmin1"
-cucm = '10.103.1.254'
+# user = 'CCMAdministrator'
+# passwd = "HWLAdmin1"
+# cucm = '10.103.1.254'
 
 # dcloud UCM
-# user = 'administrator'
-# passwd = 'dCloud123!'
-# cucm = '198.18.133.3'
+user = 'administrator'
+passwd = 'dCloud123!'
+cucm = '198.18.133.3'
 
 logging.config.dictConfig({
     'version': 1,
@@ -77,7 +77,7 @@ def get_phone(service, phone_name):
     return phone_od
 
 def refine_phone_input(phone_info):
-    #phone_info['name'] = 'SEP123212321299'
+    # phone_info['name'] = 'SEP123212321299'
     phone_info['protocol'] = 'SIP'
     phone_info['securityProfileName'] = 'Cisco 8945 - Standard SIP Non-Secure Profile'
     phone_info['sipProfileName'] = 'Standard SIP Profile'
@@ -121,24 +121,48 @@ def refine_phone_input(phone_info):
     #print(new_phone_info)
     return phone_info
 
+def add_phone(service, phone_config, index,logs):
+    try:
+        service.addPhone(phone_config)
+        logs.loc[index,'Status'] = "Migration Succeeded"
+        print("Phone {} migrated successfully".format(phone_config['name']))
+    except Fault as err:
+        print("{} Add SIP Phone failed. Error: {}".format(phone_config['name'], err))
+        logs.loc[index,'Status'] = err
+
+
+def remove_phone(service, phone_name, index,logs):
+    try:
+        print(phone_name)
+        service.removePhone(name=phone_name)
+    except Fault as err:
+        print("{} Phone deletion failed".format(phone_name))
+        logs.loc[index,'Status'] = "phone deletion failed: {}".format(err)
 
 def prod_process():
-    if sys.argv[1]:
-        input_data = read_input_data(sys.argv[1])
-        phone_list = input_data['Device Name(Line)Sort Descending']
+    try:
+        if sys.argv[1]:
+            input_data = read_input_data(sys.argv[1])
+            phone_list = input_data['Device Name(Line)Sort Descending'].to_frame()
+        else:
+            print("Please specify the input csv file path.. e.g. python ucm-phone-migration.py test.csv")
+            sys.exit(0)
 
-    for phone in phone_list:
-        phone_config = get_phone(service, phone)
-        #print(phone_config)
-        new_phone = refine_phone_input(phone_config)
-        service.addPhone(new_phone)
+        logs = phone_list.copy()
+        logs['Status'] = np.nan
+        for index, phone in phone_list.iterrows():
+            phone_config = get_phone(service, phone['Device Name(Line)Sort Descending'])
+            new_phone = refine_phone_input(phone_config)
+            remove_phone(service, phone['Device Name(Line)Sort Descending'], index,logs)
+            add_phone(service, new_phone,index,logs)
+        logs.to_csv('logs.csv',index=False)
 
+    except OSError as err:
+            logs.loc[index, 'Status'] = err
+            print("Error: {}".format(err))
 
 def main():
-    try:
-        prod_process()
-    except Fault as err:
-        print('Phone: {}'.format(err))
+    prod_process()
     
 if __name__ == "__main__":
 	main()
