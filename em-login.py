@@ -5,11 +5,15 @@ import pandas as pd
 import numpy as np
 import xmltodict,json
 
-## system settings
-ucm_ip = "198.18.133.3"
-app_username = "administrator"
-app_user_password = "dCloud123!"
+## dcloud system settings
+# ucm_ip = "198.18.133.3"
+# app_username = "administrator"
+# app_user_password = "dCloud123!"
 
+# HWL system settings
+app_username = 'CCMAdministrator'
+app_user_password = "HWLAdmin1"
+ucm_ip = '10.103.1.254'
 
 # user specific information
 device_name = "SEPB4AE2BC9C05A"
@@ -82,7 +86,7 @@ def prod_process():
         logs = input_data.copy()
         logs['Status'] = np.nan
         for index, record in input_data.iterrows():
-            payload = construct_payload(record['Device Name'],record['User ID'],"DP-{}".format(record['User ID']))
+            payload = construct_payload(record['Device Name'],record['User ID'],"{}".format(record['User ID']))
             login_user(headers, payload,index,logs)
 
         logs.to_csv('em_login_logs.csv',index=False)
